@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 // import { AuthContext } from '../../providers/AuthProvider';
 import Lottie from "lottie-react";
-import g2 from '../../../public/g2.json'
+import g2 from '../../public/g2.json'
 // import useAdmin from '../../hooks/useAdmin';
 // import DarkMode from '../DarkMode/DarkMode';
 // import './Header.css'
