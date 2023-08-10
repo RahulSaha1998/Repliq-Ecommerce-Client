@@ -27,8 +27,8 @@ const Header = () => {
     const navItems = <>
 
         <li> <Link className='font-semibold' to="/">Home</Link> </li>
-        <li> <Link className='font-semibold' to="/allTask">All Task</Link> </li>
-        <li> <Link className='font-semibold' to="/dashboard">Admin Dashboard</Link> </li>
+        <li> <Link className='font-semibold' to="/dashboard">Dashboard</Link> </li>
+        <li> <Link className='font-semibold' to="/login">Login</Link> </li>
         
     </>
 
@@ -52,7 +52,7 @@ const Header = () => {
 
 
                 <div className='w-14 lg:w-52'>
-                    <h2 className='font-bold lg:text-3xl'>REPLIQ</h2>
+                    <h2 className='font-bold lg:text-3xl'>REPLI<span className='text-red-500'>Q</span></h2>
                 </div>
 
             </div>
