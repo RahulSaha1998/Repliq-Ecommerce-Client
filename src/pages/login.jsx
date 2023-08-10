@@ -2,21 +2,20 @@ import { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import login from '../../public/login.json';
 import Lottie from "lottie-react";
-// import { AuthContext } from '../../providers/AuthProvider';
-// import SocialLogin from '../SocialLogin/SocialLogin';
+import { AuthContext } from '../providers/AuthProvider';
 import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet-async';
+import SocialLogin from './SocialLogin';
 
 
 const Login = () => {
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('');
 
-    // const { signIn } = useContext(AuthContext);
+    const { signIn } = useContext(AuthContext);
 
     const navigate = useNavigate();
     const location = useLocation();
-    // useTitle('Login')
 
     const from = location.state?.from?.pathname || '/';
 
@@ -96,7 +95,8 @@ const Login = () => {
 
                         </form>
                         <p className='my-4 text-center'>New to this site? <Link className='text-orange-600 font-bold' to="/register">Register</Link> </p>
-                        {/* <SocialLogin></SocialLogin> */}
+                        <SocialLogin></SocialLogin>
+
                     </div>
                 </div>
             </div>

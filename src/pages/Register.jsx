@@ -1,23 +1,23 @@
 import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-// import { AuthContext } from '../../providers/AuthProvider';
+import { AuthContext } from '../providers/AuthProvider';
 import Swal from 'sweetalert2';
 import Lottie from "lottie-react";
 import reg from '../../public/reg.json';
-// import SocialLogin from '../SocialLogin/SocialLogin';
 import { Helmet } from 'react-helmet-async';
+import SocialLogin from './SocialLogin';
 
 const Register = () => {
 
     const [errors, setError] = useState('')
     const [success, setSuccess] = useState('');
-    const [role, setRole] = useState("user");
+    // const [role, setRole] = useState("user");
 
     // useTitle('Register')
     const navigate = useNavigate();
 
 
-    
+    const { registerUser, logOut, updateUserData } = useContext(AuthContext)
 
     const handelRegister = (event) => {
         event.preventDefault();
@@ -28,8 +28,9 @@ const Register = () => {
         const photoURL = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, role, email, password, photoURL );
-        const saveUser = {name: name, email: email, role: role};
+        console.log(name, email, password, photoURL );
+        // role,
+        // const saveUser = {name: name, email: email, role: role};
 
         if (password.length < 6) {
             return setError('Password must be greater than 6 characters');
@@ -42,13 +43,13 @@ const Register = () => {
                 logOut()
                 console.log(loggedUser);
                 form.reset();
-                fetch('https://project-task-server.vercel.app/users', {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(saveUser)
-            });
+            //     fetch('https://project-task-server.vercel.app/users', {
+            //     method: 'POST',
+            //     headers: {
+            //         'content-type': 'application/json'
+            //     },
+            //     body: JSON.stringify(saveUser)
+            // });
 
 
                 setError('')
@@ -134,7 +135,7 @@ const Register = () => {
 
                         </form>
                         <p className='my-4 text-center'>Already Have an account? <Link className='text-orange-600 font-bold' to="/login">Login</Link> </p>
-                        {/* <SocialLogin></SocialLogin> */}
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>
