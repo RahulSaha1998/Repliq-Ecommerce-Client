@@ -11,7 +11,7 @@ const Register = () => {
 
     const [errors, setError] = useState('')
     const [success, setSuccess] = useState('');
-    const [role, setRole] = useState("user");
+    const [role, setRole] = useState("customer");
 
     const navigate = useNavigate();
 
@@ -28,7 +28,7 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(name, role, email, password, photoURL );
-        const saveUser = {name: name, email: email, role: role};
+        const saveUser = {name: name, email: email, role: role, photoURL};
 
         if (password.length < 6) {
             return setError('Password must be greater than 6 characters');

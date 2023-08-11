@@ -8,7 +8,7 @@ const SocialLogin = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const [role, setRole] = useState("user");
+    const [role, setRole] = useState("customer");
 
     const from = location.state?.from?.pathname || '/';
 

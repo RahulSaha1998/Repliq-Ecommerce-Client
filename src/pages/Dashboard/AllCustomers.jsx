@@ -1,0 +1,64 @@
+import { useLoaderData } from "react-router-dom";
+import Loader from "../../components/Loader";
+import { Helmet } from "react-helmet-async";
+import SectionTitle from "../../components/SectionTitle";
+import { Fade } from "react-awesome-reveal";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+
+const AllCustomers = () => {
+
+    const { loading } = useContext(AuthContext);
+
+    if (loading) {
+        return <Loader></Loader>
+    }
+
+    const loadedUser = useLoaderData();
+    console.log(loadedUser);
+
+    return (
+        <div className='w-full h-full'>
+            <Helmet>
+                <title>Camp Arena | Manage Users</title>
+            </Helmet>
+            <div className="overflow-x-auto">
+                <SectionTitle heading='Manage Users' />
+                <div className="overflow-x-auto m-8 card shadow-2xl">
+                    <Fade>
+                        <table className="table table-zebra w-full">
+                            {/* head */}
+                            <thead>
+                                <tr className='bg-slate-400 text-slate-800'>
+                                    <th className='text-center'>Serial</th>
+                                    <th className='text-center'>Photo</th>
+                                    <th className='text-center'>Name</th>
+                                    <th className='text-center'>Email</th>
+                                    <th className='text-center'>Role</th>
+                                    
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    loadedUser.map((user, index) =>
+                                        <tr key={user._id} className='font-bold'>
+                                            <th className="text-center">{index + 1}</th>
+                                            <th className="text-center"><img className="w-16" src={user?.photoURL} alt="" /></th>
+                                            <td className="text-center">{user.name}</td>
+                                            <td className="text-center">{user.email}</td>
+                                            <td className="text-center">{user.role}</td>
+                                            
+                                        </tr>)
+                                }
+
+                            </tbody>
+                        </table>
+                    </Fade>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default AllCustomers;
