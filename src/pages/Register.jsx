@@ -11,9 +11,8 @@ const Register = () => {
 
     const [errors, setError] = useState('')
     const [success, setSuccess] = useState('');
-    // const [role, setRole] = useState("user");
+    const [role, setRole] = useState("user");
 
-    // useTitle('Register')
     const navigate = useNavigate();
 
 
