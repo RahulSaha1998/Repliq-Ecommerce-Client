@@ -5,10 +5,10 @@ import Main from "../layouts/Main";
 import Home from "../pages/Home";
 import Login from "../pages/login";
 import Register from "../pages/Register";
-import Dashboard from "../pages/Dashboard";
 import AdminRoute from "./AdminRoute";
 import Cart from "../pages/Cart";
 import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../layouts/Dashboard";
 
 export const router = createBrowserRouter([
     {
@@ -28,13 +28,13 @@ export const router = createBrowserRouter([
                 element: <Register></Register>
             },
             {
-                path: "/dashboard",
-                element: <AdminRoute><Dashboard></Dashboard></AdminRoute>
-            },
-            {
                 path: "/cart",
                 element: <PrivateRoute><Cart></Cart></PrivateRoute>
             },
         ]
+    },
+    {
+        path: "/dashboard",
+        element: <AdminRoute><Dashboard></Dashboard></AdminRoute>
     },
 ]);
