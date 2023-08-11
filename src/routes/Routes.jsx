@@ -9,6 +9,7 @@ import AdminRoute from "./AdminRoute";
 import Cart from "../pages/Cart";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../layouts/Dashboard";
+import AddProduct from "../pages/Dashboard/AddProduct";
 
 export const router = createBrowserRouter([
     {
@@ -35,6 +36,12 @@ export const router = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        element: <AdminRoute><Dashboard></Dashboard></AdminRoute>
+        element: <AdminRoute><Dashboard></Dashboard></AdminRoute>,
+        children: [
+            {
+                path: "/dashboard/addProduct",
+                element: <AddProduct></AddProduct>
+            }
+        ]
     },
 ]);
