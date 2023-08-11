@@ -1,16 +1,16 @@
 import { useContext } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
-// import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 
 const SocialLogin = () => {
 
-    // const navigate = useNavigate();
-    // const location = useLocation();
+    const navigate = useNavigate();
+    const location = useLocation();
     // const [role, setRole] = useState("user");
 
-    // const from = location.state?.from?.pathname || '/';
+    const from = location.state?.from?.pathname || '/';
 
     const { signInWGoogle,
     } = useContext(AuthContext);
@@ -27,6 +27,7 @@ const SocialLogin = () => {
                     showConfirmButton: false,
                     timer: 2000
                 })
+                navigate(from, { replace: true });
                 // fetch('https://project-task-server.vercel.app/users', {
                 //     method: 'POST',
                 //     headers: {

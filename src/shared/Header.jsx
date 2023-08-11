@@ -1,39 +1,45 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-// import { AuthContext } from '../../providers/AuthProvider';
+import { AuthContext } from '../providers/AuthProvider';
 import Lottie from "lottie-react";
 import g2 from '../../public/g2.json'
+import DarkMode from '../pages/DarkMode';
 // import useAdmin from '../../hooks/useAdmin';
-// import DarkMode from '../DarkMode/DarkMode';
 // import './Header.css'
-
 
 
 const Header = () => {
 
-    // const { user, logOut, setLoading } = useContext(AuthContext);
+    const { user, logOut, setLoading } = useContext(AuthContext);
     // const [isAdmin] = useAdmin();
 
 
-    // const handleLogOut = () => {
-    //     logOut()
-    //         .then(() => setLoading(false))
-    //         .catch(error => {
-    //             console.log(error)
-    //         })
-    // }
+    const handleLogOut = () => {
+        logOut()
+            .then(() => setLoading(false))
+            .catch(error => {
+                console.log(error)
+            })
+    }
 
 
     const navItems = <>
 
         <li> <Link className='font-semibold' to="/">Home</Link> </li>
-        <li> <Link className='font-semibold' to="/dashboard">Dashboard</Link> </li>
-        <li> <Link className='font-semibold' to="/login">Login</Link> </li>
-        
-    </>
 
-    const btn = <>
-        <button className='btn btn-info'>Log out</button>
+        <li> <Link className='font-semibold' to="/dashboard">Dashboard</Link> </li>
+        {
+            user ? <>
+                <button onClick={handleLogOut}>
+                    <li> <Link className='font-semibold'>Logout</Link> </li>
+                </button>
+            </>
+                : <>
+                    <li> <Link className='font-semibold' to="/login">Login</Link> </li>
+
+                </>
+        }
+
     </>
 
     return (
@@ -45,7 +51,6 @@ const Header = () => {
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         {navItems}
-                        {/* {user && btn} */}
                     </ul>
                 </div>
                 <Lottie className='w-24' animationData={g2}></Lottie>
@@ -63,27 +68,18 @@ const Header = () => {
             </div>
             <div className="navbar-end gap-2">
                 <div>
-                    {/* <DarkMode/> */}
+                    <DarkMode />
                 </div>
-                {/* <div className=' flex items-center gap-4'>
-                    {
-                        user?.email ? <>
-
-                            <div className=' w-12 mt-1'>
-                                <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
-                                    <img className='rounded-full cursor-pointer' src={user?.photoURL} alt="" />
-                                </div>
+                <div className=' flex items-center gap-4'>
+                    {user?.email && (
+                        <div className=' w-12 mt-1'>
+                            <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
+                                <img className='rounded-full cursor-pointer' src={user?.photoURL} alt="" />
                             </div>
-                            <div className="navbar-center hidden lg:flex">
-                                <ul className="menu menu-horizontal px-1">
-                                    {btn}
-                                </ul>
-                            </div>
+                        </div>
+                    )}
+                </div>
 
-                        </>
-                            : <Link to="/login"><button className='btn btn-info'>Login</button></Link>
-                    }
-                </div> */}
             </div>
         </div>
 
