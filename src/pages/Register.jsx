@@ -27,9 +27,8 @@ const Register = () => {
         const photoURL = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, email, password, photoURL );
-        // role,
-        // const saveUser = {name: name, email: email, role: role};
+        console.log(name, role, email, password, photoURL );
+        const saveUser = {name: name, email: email, role: role};
 
         if (password.length < 6) {
             return setError('Password must be greater than 6 characters');
@@ -42,13 +41,13 @@ const Register = () => {
                 logOut()
                 console.log(loggedUser);
                 form.reset();
-            //     fetch('https://project-task-server.vercel.app/users', {
-            //     method: 'POST',
-            //     headers: {
-            //         'content-type': 'application/json'
-            //     },
-            //     body: JSON.stringify(saveUser)
-            // });
+                fetch('http://localhost:5000/users', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(saveUser)
+            });
 
 
                 setError('')
