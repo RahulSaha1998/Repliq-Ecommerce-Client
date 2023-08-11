@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
-import Loader from "./Loader";
+import Loader from "../components/Loader";
 
 const Home = () => {
 

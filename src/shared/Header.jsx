@@ -3,15 +3,14 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 import Lottie from "lottie-react";
 import g2 from '../../public/g2.json'
-import DarkMode from '../pages/DarkMode';
-// import useAdmin from '../../hooks/useAdmin';
-// import './Header.css'
+import DarkMode from '../components/DarkMode';
+import useAdmin from '../hooks/useAdmin';
 
 
 const Header = () => {
 
     const { user, logOut, setLoading } = useContext(AuthContext);
-    // const [isAdmin] = useAdmin();
+    const [isAdmin] = useAdmin();
 
 
     const handleLogOut = () => {
@@ -27,7 +26,18 @@ const Header = () => {
 
         <li> <Link className='font-semibold' to="/">Home</Link> </li>
 
-        <li> <Link className='font-semibold' to="/dashboard">Dashboard</Link> </li>
+        {
+            isAdmin ? <>
+                <li> <Link className='font-semibold' to="/dashboard">Admin Dashboard</Link> </li>
+            </>
+                :
+                <>
+                    <li> <Link className='font-semibold' to="/cart">Cart</Link> </li>
+                </>
+        }
+
+
+
         {
             user ? <>
                 <button onClick={handleLogOut}>
