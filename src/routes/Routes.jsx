@@ -14,6 +14,7 @@ import AllCustomers from "../pages/Dashboard/AllCustomers";
 import AllProducts from "../pages/Dashboard/AllProducts";
 import UpdateProduct from "../pages/Dashboard/UpdateProduct";
 import ViewDetails from "../pages/ViewDetails";
+import Checkout from "../pages/Checkout";
 
 export const router = createBrowserRouter([
     {
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
             {
                 path: "/cart",
                 element: <PrivateRoute><Cart></Cart></PrivateRoute>
+            },
+            {
+                path: "/cart/checkout",
+                element: <PrivateRoute><Checkout></Checkout></PrivateRoute>
             },
             {
                 path: "/details/:id",

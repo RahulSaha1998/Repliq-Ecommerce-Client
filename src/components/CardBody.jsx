@@ -1,6 +1,6 @@
 import Rating from 'react-rating';
 import { FaRegStar, FaStar } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import Swal from 'sweetalert2';
@@ -9,6 +9,9 @@ import useAdmin from '../hooks/useAdmin';
 
 
 const CardBody = ({ item }) => {
+
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const { _id, price, quantity, product_name, image, rating, description } = item;
 
