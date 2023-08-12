@@ -50,7 +50,7 @@ const AddProduct = () => {
 
                 // Add the product to the server
                 const addProductResponse = await fetch(
-                    "http://localhost:5000/products",
+                    "https://repliq-ecommerce-server-gamma.vercel.app/products",
                     {
                         method: "POST",
                         headers: {

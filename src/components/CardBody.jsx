@@ -36,7 +36,7 @@ const CardBody = ({ item }) => {
             }
 
             //post the cart products to the Database
-            fetch('http://localhost:5000/cartProducts', {
+            fetch('https://repliq-ecommerce-server-gamma.vercel.app/cartProducts', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

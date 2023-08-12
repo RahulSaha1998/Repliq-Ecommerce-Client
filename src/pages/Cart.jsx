@@ -14,7 +14,7 @@ const Cart = () => {
 
     // Fetch cart products when user data changes
     useEffect(() => {
-        fetch(`http://localhost:5000/cartProducts/${user?.email}`)
+        fetch(`https://repliq-ecommerce-server-gamma.vercel.app/cartProducts/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setCartProduct(data);
@@ -24,7 +24,7 @@ const Cart = () => {
     // Function to handle product deletion
     const handleDelete = _id => {
         console.log(_id);
-        fetch(`http://localhost:5000/cartProducts/${_id}`, {
+        fetch(`https://repliq-ecommerce-server-gamma.vercel.app/cartProducts/${_id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

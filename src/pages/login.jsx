@@ -104,8 +104,7 @@ const Login = () => {
             </div>
             <div>
                 <h2>
-                    <Lottie animationData={login}></Lottie>   {/* Display animation using Lottie */}
-                </h2>
+                    <Lottie animationData={login}></Lottie>
                 </h2>
             </div>
         </div>

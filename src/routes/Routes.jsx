@@ -15,6 +15,7 @@ import AllProducts from "../pages/Dashboard/AllProducts";
 import UpdateProduct from "../pages/Dashboard/UpdateProduct";
 import ViewDetails from "../pages/ViewDetails";
 import Checkout from "../pages/Checkout";
+import NotFoundPage from "../components/NotFoundPage";
 
 export const router = createBrowserRouter([
     {
@@ -44,7 +45,7 @@ export const router = createBrowserRouter([
             {
                 path: "/details/:id",
                 element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
+                loader: ({ params }) => fetch(`https://repliq-ecommerce-server-gamma.vercel.app/products/${params.id}`)
             },
             
         ]
@@ -60,19 +61,23 @@ export const router = createBrowserRouter([
             {
                 path: "/dashboard/allCustomers",
                 element: <AllCustomers></AllCustomers>,
-                loader: () => fetch('http://localhost:5000/users')
+                loader: () => fetch('https://repliq-ecommerce-server-gamma.vercel.app/users')
             },
             {
                 path: "/dashboard/allProducts",
                 element: <AllProducts></AllProducts>,
-                loader: () => fetch('http://localhost:5000/products')
+                loader: () => fetch('https://repliq-ecommerce-server-gamma.vercel.app/products')
             },
             {
                 path: "/dashboard/updateProduct/:id",
                 element: <UpdateProduct></UpdateProduct>,
-                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
+                loader: ({ params }) => fetch(`https://repliq-ecommerce-server-gamma.vercel.app/products/${params.id}`)
             }
             
         ]
     },
+    {
+        path: '*',
+        element: <NotFoundPage></NotFoundPage>
+      }
 ]);

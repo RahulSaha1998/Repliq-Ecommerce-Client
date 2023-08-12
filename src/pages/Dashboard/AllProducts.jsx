@@ -22,7 +22,7 @@ const AllProducts = () => {
 
     const handleDelete = _id => {
         console.log(_id);
-        fetch(`http://localhost:5000/products/${_id}`, {
+        fetch(`https://repliq-ecommerce-server-gamma.vercel.app/products/${_id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

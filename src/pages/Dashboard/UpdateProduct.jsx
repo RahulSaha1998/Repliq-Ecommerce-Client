@@ -31,7 +31,7 @@ const Update = () => {
         };
 
         // Send PUT request to update the product
-        fetch(`http://localhost:5000/products/${loadedProduct._id}`, {
+        fetch(`https://repliq-ecommerce-server-gamma.vercel.app/products/${loadedProduct._id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
