@@ -34,6 +34,7 @@ const AllCustomers = () => {
                                     <th className='text-center'>Photo</th>
                                     <th className='text-center'>Name</th>
                                     <th className='text-center'>Email</th>
+                                    <th className='text-center'>Phone Number</th>
                                     <th className='text-center'>Role</th>
                                     
                                     
@@ -44,9 +45,10 @@ const AllCustomers = () => {
                                     loadedUser.map((user, index) =>
                                         <tr key={user._id} className='font-bold'>
                                             <th className="text-center">{index + 1}</th>
-                                            <th className="text-center"><img className="w-16" src={user?.photoURL} alt="" /></th>
+                                            <th className="text-center"><img className="w-24 mx-auto" src={user?.photoURL} alt="" /></th>
                                             <td className="text-center">{user.name}</td>
                                             <td className="text-center">{user.email}</td>
+                                            <td className="text-center">{user.phone}</td>
                                             <td className="text-center">{user.role}</td>
                                             
                                         </tr>)

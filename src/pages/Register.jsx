@@ -26,12 +26,13 @@ const Register = () => {
         const name = form.name.value;
         const photoURL = form.photo.value;
         const email = form.email.value;
+        const phone = form.phone.value;
         const password = form.password.value;
-        console.log(name, role, email, password, photoURL );
-        const saveUser = {name: name, email: email, role: role, photoURL};
+        console.log(name, role, email, password, photoURL);
+        const saveUser = { name: name, email: email, role: role, photoURL, phone };
 
         if (password.length < 6) {
-            return setError('Password must be greater than 6 characters');
+            return setError('Password must be greater or equal than 6 characters');
         }
 
         registerUser(email, password)
@@ -42,12 +43,12 @@ const Register = () => {
                 console.log(loggedUser);
                 form.reset();
                 fetch('http://localhost:5000/users', {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(saveUser)
-            });
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(saveUser)
+                });
 
 
                 setError('')
@@ -57,8 +58,8 @@ const Register = () => {
                     title: 'Registration Successful!',
                     showConfirmButton: false,
                     timer: 1500
-                  })
-                  navigate('/login')
+                })
+                navigate('/login')
 
             })
             .catch(error => {
@@ -112,6 +113,19 @@ const Register = () => {
                             </div>
                             <div className="form-control">
                                 <label className="label">
+                                    <span className="label-text">Phone</span>
+                                </label>
+                                <input type="tel"
+                                    placeholder="+880"
+                                    name="phone"
+                                    className="input input-bordered"
+                                    pattern="[0-9]{11}"
+                                    title="Please enter a 11-digit phone number"
+                                    required />
+                            </div>
+
+                            <div className="form-control">
+                                <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
                                 <input type="password" placeholder="password"
@@ -142,3 +156,13 @@ const Register = () => {
 };
 
 export default Register;
+
+
+
+
+
+
+
+
+
+

@@ -71,7 +71,7 @@ const AllProducts = () => {
                                     products.map((product, index) =>
                                         <tr key={product._id} className='font-bold'>
                                             <th className="text-center">{index + 1}</th>
-                                            <th className="text-center"><img className="w-24" src={product?.image} alt="" /></th>
+                                            <th className="text-center"><img className="w-24 mx-auto" src={product?.image} alt="" /></th>
                                             <td className="text-center">{product.product_name}</td>
                                             <td className="text-center">${product.price}</td>
                                             <td className="text-center">{product.quantity}</td>
