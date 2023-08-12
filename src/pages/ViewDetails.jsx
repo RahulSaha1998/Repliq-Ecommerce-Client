@@ -13,7 +13,7 @@ const ViewDetails = () => {
     const { price, quantity, product_name, image, rating, description } = loadedProduct;
 
     const handleFavoriteButton = () => {
-        toast("WOW! The Product is as Sweet as You!");
+        toast("WOW! The Product is as Cool as You!");
       };
 
     return (

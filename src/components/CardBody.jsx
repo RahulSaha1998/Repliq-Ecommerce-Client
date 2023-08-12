@@ -1,14 +1,74 @@
 import Rating from 'react-rating';
 import { FaRegStar, FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../providers/AuthProvider';
+import Swal from 'sweetalert2';
+import useAdmin from '../hooks/useAdmin';
+
 
 
 const CardBody = ({ item }) => {
 
-    const { _id, price, quantity, product_name, image, rating } = item;
-    // console.log(item);
+    const { _id, price, quantity, product_name, image, rating, description } = item;
 
-    
+    const [isAdmin] = useAdmin();
+    const { user } = useContext(AuthContext);
+
+    const handelAddToCart = item => {
+
+        console.log(item);
+
+        if (user && user.email) {
+            const cartItem = {
+                product_name,
+                email: user.email,
+                price: parseFloat(price),
+                quantity: parseInt(quantity),
+                rating: parseFloat(rating),
+                description,
+                image
+            }
+
+            fetch('http://localhost:5000/cartProducts', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(cartItem)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.insertedId) {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Product added to the cart Successfully!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
+                })
+
+        }
+        else {
+            Swal.fire({
+                title: 'You have to login first to added the class!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Login now!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/login', { state: { from: location } })
+                }
+            })
+        }
+
+    }
+
+
 
     return (
         <div className="card w-full h-full bg-base-300 shadow-xl">
@@ -20,9 +80,6 @@ const CardBody = ({ item }) => {
                 <h2><span className='text-red-600 font-bold'>Price:</span> <span className='font-bold'>{'$' + price}</span></h2>
 
                 <h2><span className='text-red-600 font-bold'>Quantity:</span> <span className='font-bold'>{quantity}</span></h2>
-
-
-
 
                 <div className='flex justify-between'>
                     <h2><span className='text-red-600 font-bold'>Ratings: </span> <span className="font-bold">{rating}</span> </h2>
@@ -40,12 +97,16 @@ const CardBody = ({ item }) => {
 
                 <div className="flex justify-between">
 
-                    <Link to={`/details/${_id}`}>
-                        <button onClick={() => handleDetails(_id)} className='btn btn-info gap-2'>Add to Cart</button>
-                    </Link>
-                    <Link to={`/details/${_id}`}>
-                        <button onClick={() => handleDetails(_id)} className='btn btn-info gap-2'>View Details</button>
-                    </Link>
+                    <button
+                        onClick={() => handelAddToCart(item)} className='btn btn-info gap-2'
+                        disabled={isAdmin}
+                    >Add to Cart</button>
+
+                    <button
+                        className='btn btn-info gap-2'
+                        disabled={!user}
+                    ><Link to={`/details/${_id}`}>View Details </Link></button>
+
 
                 </div>
             </div>
