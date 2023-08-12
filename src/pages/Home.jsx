@@ -3,6 +3,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import Loader from "../components/Loader";
 import { Helmet } from 'react-helmet-async';
 import ProductCard from "../components/ProductCard";
+import CustomerReview from "../components/CustomerReview";
 
 
 const Home = () => {
@@ -20,6 +21,9 @@ const Home = () => {
             </Helmet>
             <div>
                 <ProductCard></ProductCard>
+            </div>
+            <div>
+                <CustomerReview></CustomerReview>
             </div>
         </div>
     );

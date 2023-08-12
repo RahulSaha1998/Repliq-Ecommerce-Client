@@ -23,7 +23,7 @@ const ProductCard = () => {
 
     return (
         <div>
-            <div className='grid lg:grid-cols-3 gap-10 lg:gap-5 p-5'>
+            <div className='grid lg:grid-cols-3 gap-3 lg:gap-5 p-5'>
                 {
                     products.map(item => <CardBody
                         key={item._id}

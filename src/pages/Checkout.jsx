@@ -1,4 +1,6 @@
 import { useLocation } from "react-router-dom";
+import { Helmet } from 'react-helmet-async';
+
 
 const Checkout = () => {
 
@@ -11,6 +13,9 @@ const Checkout = () => {
     return (
 
         <div className="max-w-sm mx-auto">
+            <Helmet>
+                <title>REPLIQ | Checkout</title>
+            </Helmet>
             <p className="text-center font-bold text-2xl mb-5"><u>Please Pay: ${total}</u></p>
             <form className="bg-slate-200 shadow-lg rounded px-8 pt-6 pb-8 mb-4">
                 <div className="mb-4">
