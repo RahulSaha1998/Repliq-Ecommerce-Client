@@ -1,23 +1,18 @@
-import { useContext } from "react";
-import { AuthContext } from "../providers/AuthProvider";
 import Rating from 'react-rating';
-import { FaArrowRight, FaRegStar, FaStar } from 'react-icons/fa';
+import { FaRegStar, FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import Loader from "./Loader";
+
 
 const CardBody = ({ item }) => {
 
     const { _id, price, quantity, product_name, image, rating } = item;
     // console.log(item);
 
-    const { loading } = useContext(AuthContext);
-    if (loading) {
-        return <Loader></Loader>
-    }
+    
 
     return (
-        <div className="card w-full h-full bg-base-100 shadow-xl">
-            <figure><img className="rounded-xl lg:h-52" src={image} alt="Shoes" /></figure>
+        <div className="card w-full h-full bg-base-300 shadow-xl">
+            <figure><img className="rounded-xl my-5 lg:h-52" src={image} alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="card-title"><span className='text-red-600 font-bold'>Product:</span>
                     {product_name}</h2>
@@ -30,7 +25,7 @@ const CardBody = ({ item }) => {
 
 
                 <div className='flex justify-between'>
-                    <h2><span className='text-red-600 font-bold'>Ratings: <span className="text-black">{rating}</span></span> </h2>
+                    <h2><span className='text-red-600 font-bold'>Ratings: </span> <span className="font-bold">{rating}</span> </h2>
                     <div className=''>
                         <Rating
                             placeholderRating={rating}

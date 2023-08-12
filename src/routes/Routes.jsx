@@ -13,6 +13,7 @@ import AddProduct from "../pages/Dashboard/AddProduct";
 import AllCustomers from "../pages/Dashboard/AllCustomers";
 import AllProducts from "../pages/Dashboard/AllProducts";
 import UpdateProduct from "../pages/Dashboard/UpdateProduct";
+import ViewDetails from "../pages/ViewDetails";
 
 export const router = createBrowserRouter([
     {
@@ -34,6 +35,11 @@ export const router = createBrowserRouter([
             {
                 path: "/cart",
                 element: <PrivateRoute><Cart></Cart></PrivateRoute>
+            },
+            {
+                path: "/details/:id",
+                element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
             },
             
         ]

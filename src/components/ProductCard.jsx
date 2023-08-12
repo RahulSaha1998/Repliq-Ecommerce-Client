@@ -1,9 +1,15 @@
-import { useEffect, useState } from 'react';
-
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from "../providers/AuthProvider";
 import CardBody from './CardBody';
+import Loader from './Loader';
 
 const ProductCard = () => {
     const [products, setProduct] = useState([]);
+    const { loading } = useContext(AuthContext);
+
+    if (loading) {
+        return <Loader></Loader>
+    }
 
     useEffect(() => {
         fetch('http://localhost:5000/products')
