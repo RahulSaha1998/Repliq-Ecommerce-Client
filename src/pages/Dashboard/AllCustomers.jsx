@@ -8,12 +8,14 @@ import { AuthContext } from "../../providers/AuthProvider";
 
 const AllCustomers = () => {
 
+    // Access loading state from AuthContext
     const { loading } = useContext(AuthContext);
 
     if (loading) {
         return <Loader></Loader>
     }
 
+    // Get the data loaded using useLoaderData
     const loadedUser = useLoaderData();
     console.log(loadedUser);
 
@@ -36,8 +38,7 @@ const AllCustomers = () => {
                                     <th className='text-center'>Email</th>
                                     <th className='text-center'>Phone Number</th>
                                     <th className='text-center'>Role</th>
-                                    
-                                    
+                                
                                 </tr>
                             </thead>
                             <tbody>

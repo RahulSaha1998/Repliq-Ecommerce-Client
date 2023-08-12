@@ -8,12 +8,14 @@ const SocialLogin = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const [role, setRole] = useState("customer");
+    const [role, setRole] = useState("customer"); // State for user role
 
+    // Get the path to navigate back after login
     const from = location.state?.from?.pathname || '/';
 
+    // Access signInWGoogle function from AuthContext
     const { signInWGoogle,
-    } = useContext(AuthContext);
+    } = useContext(AuthContext); 
     const handleGoogleSignIn = () => {
         signInWGoogle()
         .then(result => {

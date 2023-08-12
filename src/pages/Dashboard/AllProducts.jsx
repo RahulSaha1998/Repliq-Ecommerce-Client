@@ -60,9 +60,9 @@ const AllProducts = () => {
                                     <th className='text-center'>Name</th>
                                     <th className='text-center'>Price</th>
                                     <th className='text-center'>Quantity</th>
-                                    <th className='text-center'>rating</th>
-                                    <th className='text-center'>Delete</th>
+                                    <th className='text-center'>Rating</th>
                                     <th className='text-center'>Update</th>
+                                    <th className='text-center'>Delete</th>
                                 
                                 </tr>
                             </thead>

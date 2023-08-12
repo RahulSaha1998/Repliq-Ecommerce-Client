@@ -13,6 +13,7 @@ const CardBody = ({ item }) => {
     const navigate = useNavigate();
     const location = useLocation();
 
+    //destructure the item from the props
     const { _id, price, quantity, product_name, image, rating, description } = item;
 
     const [isAdmin] = useAdmin();
@@ -22,6 +23,7 @@ const CardBody = ({ item }) => {
 
         console.log(item);
 
+        //if the user and user mail available than it will run
         if (user && user.email) {
             const cartItem = {
                 product_name,
@@ -33,6 +35,7 @@ const CardBody = ({ item }) => {
                 image
             }
 
+            //post the cart products to the Database
             fetch('http://localhost:5000/cartProducts', {
                 method: 'POST',
                 headers: {
@@ -81,7 +84,6 @@ const CardBody = ({ item }) => {
                     {product_name}</h2>
 
                 <h2><span className='text-red-600 font-bold'>Price:</span> <span className='font-bold'>{'$' + price}</span></h2>
-
                 <h2><span className='text-red-600 font-bold'>Quantity:</span> <span className='font-bold'>{quantity}</span></h2>
 
                 <div className='flex justify-between'>
@@ -99,16 +101,20 @@ const CardBody = ({ item }) => {
 
 
                 <div className="flex justify-between">
-
                     <button
-                        onClick={() => handelAddToCart(item)} className='btn btn-info gap-2'
+                        onClick={() => handelAddToCart(item)} 
+                        className='btn btn-info gap-2'
                         disabled={isAdmin}
-                    >Add to Cart</button>
+                    >Add to Cart
+                    </button>
 
                     <button
                         className='btn btn-info gap-2'
                         disabled={!user}
-                    ><Link to={`/details/${_id}`}>View Details </Link></button>
+                    ><Link 
+                    to={`/details/${_id}`}
+                    >View Details </Link>
+                    </button>
 
 
                 </div>

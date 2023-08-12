@@ -7,10 +7,12 @@ const ProductCard = () => {
     const [products, setProduct] = useState([]);
     const { loading } = useContext(AuthContext);
 
+    // If loading, display a loader
     if (loading) {
         return <Loader></Loader>
     }
 
+    // Fetch products when the component mounts
     useEffect(() => {
         fetch('http://localhost:5000/products')
             .then(res => res.json())

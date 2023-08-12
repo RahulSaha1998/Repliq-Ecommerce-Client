@@ -17,7 +17,6 @@ const Dashboard = () => {
             
                     <li><NavLink to="/dashboard/allProducts"><FaBoxOpen></FaBoxOpen>All Products</NavLink></li>
                     <li><NavLink to="/dashboard/addProduct"> <FaPlusCircle></FaPlusCircle> Add Product</NavLink></li>
-
                     <li><NavLink to="/dashboard/allCustomers"><FaUsers></FaUsers> All Customers</NavLink></li>
 
                     <div className="divider"></div>

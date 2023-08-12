@@ -9,8 +9,8 @@ import SocialLogin from './SocialLogin';
 
 const Register = () => {
 
-    const [errors, setError] = useState('')
-    const [success, setSuccess] = useState('');
+    const [errors, setError] = useState(''); // State for error message
+    const [success, setSuccess] = useState(''); // State for error message
     const [role, setRole] = useState("customer");
 
     const navigate = useNavigate();
@@ -35,10 +35,11 @@ const Register = () => {
             return setError('Password must be greater or equal than 6 characters');
         }
 
+        // Register user using authentication
         registerUser(email, password)
             .then(result => {
                 const loggedUser = result.user;
-                updateUserData(name, photoURL);
+                updateUserData(name, photoURL); // Update user data in context
                 logOut()
                 console.log(loggedUser);
                 form.reset();
@@ -47,7 +48,7 @@ const Register = () => {
                     headers: {
                         'content-type': 'application/json'
                     },
-                    body: JSON.stringify(saveUser)
+                    body: JSON.stringify(saveUser) // Save user data to the server
                 });
 
 

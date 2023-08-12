@@ -4,11 +4,15 @@ import SectionTitle from "../../components/SectionTitle";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 
+// Get the image hosting token from environment variables
 const image_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 
 const AddProduct = () => {
+
+    // Construct the image hosting URL
     const img_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`;
 
+    // useForm hook for form handling
     const {
         register,
         handleSubmit,
@@ -16,9 +20,12 @@ const AddProduct = () => {
         formState: { errors },
     } = useForm();
 
+
+    // Function to handle adding a product
     const handelAddProduct = async (data) => {
         const { name, price, quantity, rating, description, image } = data;
 
+        // Create a FormData object for image upload
         const formData = new FormData();
         formData.append("image", image[0]);
 
@@ -41,6 +48,7 @@ const AddProduct = () => {
                     image: imgURL,
                 };
 
+                // Add the product to the server
                 const addProductResponse = await fetch(
                     "http://localhost:5000/products",
                     {

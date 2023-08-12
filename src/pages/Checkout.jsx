@@ -4,8 +4,11 @@ import { Helmet } from 'react-helmet-async';
 
 const Checkout = () => {
 
+    // Get the location object from the useLocation hook
     const location = useLocation();
-    const total = location.state;
+
+    // Extract the total amount from the location state
+    const total = location.state; 
     console.log(total);
 
 

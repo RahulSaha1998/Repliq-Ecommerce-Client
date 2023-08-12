@@ -9,14 +9,15 @@ import SocialLogin from './SocialLogin';
 
 
 const Login = () => {
-    const [error, setError] = useState('')
-    const [success, setSuccess] = useState('');
+    const [error, setError] = useState(''); // State for error message
+    const [success, setSuccess] = useState(''); // State for error message
 
     const { signIn } = useContext(AuthContext);
 
-    const navigate = useNavigate();
+    const navigate = useNavigate(); 
     const location = useLocation();
 
+    // Get previous page path '/'
     const from = location.state?.from?.pathname || '/';
 
     const handelLogin = (event) => {
@@ -41,6 +42,7 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 1500
                 })
+                // Navigate back to the previous page
                 navigate(from, { replace: true })
             })
             .catch(error => {
@@ -102,7 +104,8 @@ const Login = () => {
             </div>
             <div>
                 <h2>
-                    <Lottie animationData={login}></Lottie>
+                    <Lottie animationData={login}></Lottie>   {/* Display animation using Lottie */}
+                </h2>
                 </h2>
             </div>
         </div>

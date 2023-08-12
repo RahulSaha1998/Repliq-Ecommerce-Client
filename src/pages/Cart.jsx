@@ -8,9 +8,11 @@ import { Link } from 'react-router-dom';
 
 const Cart = () => {
 
+    // State for storing cart products
     const [cartProduct, setCartProduct] = useState([]);
     const { user } = useContext(AuthContext);
 
+    // Fetch cart products when user data changes
     useEffect(() => {
         fetch(`http://localhost:5000/cartProducts/${user?.email}`)
             .then(res => res.json())
@@ -19,7 +21,7 @@ const Cart = () => {
             })
     }, [user])
 
-
+    // Function to handle product deletion
     const handleDelete = _id => {
         console.log(_id);
         fetch(`http://localhost:5000/cartProducts/${_id}`, {
@@ -35,6 +37,8 @@ const Cart = () => {
                         showConfirmButton: false,
                         timer: 1500
                     })
+
+                    // Update the cartProduct state to remove the deleted product
                     const remaining = cartProduct.filter(product => product._id !== _id);
                     setCartProduct(remaining);
                 }
@@ -52,7 +56,7 @@ const Cart = () => {
             </Helmet>
             <div className="flex items-center gap-5 justify-end mb-5">
                 <p className="text-lg font-semibold">Total: ${total}</p>
-                <Link to="/cart/checkout" state={total}>
+                <Link to="/cart/checkout" state={total}> 
                     <button className='btn btn-outline'>Checkout</button>
                 </Link>
             </div>

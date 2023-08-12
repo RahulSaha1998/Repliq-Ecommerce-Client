@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react';
 
 const DarkMode = () => {
 
+    // Use local storage to maintain theme state across sessions
     const [theme, setTheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light')
 
+    // Function to handle theme toggle
     const handleToggle = (e) => {
         if (e.target.checked) {
             setTheme('dark')
@@ -13,6 +15,7 @@ const DarkMode = () => {
         }
     }
 
+    // Effect to update theme in local storage and apply to the HTML element
     useEffect(() => {
         localStorage.setItem('theme', theme);
         const localTheme = localStorage.getItem('theme');

@@ -8,8 +8,10 @@ import CustomerReview from "../components/CustomerReview";
 
 const Home = () => {
 
+    // Access loading state from AuthContext
     const { loading } = useContext(AuthContext);
 
+    // Display Loader component while loading
     if (loading) {
         return <Loader></Loader>
     }

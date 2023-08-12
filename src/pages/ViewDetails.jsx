@@ -9,11 +9,13 @@ import { Helmet } from 'react-helmet-async';
 
 const ViewDetails = () => {
 
+    // Get data using useLoaderData hook
     const loadedProduct = useLoaderData();
 
-
+    // Destructure product data
     const { price, quantity, product_name, image, rating, description } = loadedProduct;
 
+    // Show a toast message when favorite button is clicked
     const handleFavoriteButton = () => {
         toast("WOW! The Product is as Cool as You!");
     };
