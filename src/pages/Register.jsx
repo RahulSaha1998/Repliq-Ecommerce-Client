@@ -72,7 +72,7 @@ const Register = () => {
     return (
         <div className='grid md:grid-cols-2 mx-auto'>
             <Helmet>
-                <title>Daily Task | Register</title>
+                <title>REPLIQ | Register</title>
             </Helmet>
             <div>
                 <h2>

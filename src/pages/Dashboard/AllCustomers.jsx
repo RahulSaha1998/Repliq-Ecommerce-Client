@@ -20,10 +20,10 @@ const AllCustomers = () => {
     return (
         <div className='w-full h-full'>
             <Helmet>
-                <title>REPLIQ | ALL CUSTOMERS</title>
+                <title>REPLIQ | All Customers</title>
             </Helmet>
             <div className="overflow-x-auto">
-                <SectionTitle heading='Manage Users' />
+                <SectionTitle heading='Customer List' />
                 <div className="overflow-x-auto m-8 card shadow-2xl">
                     <Fade>
                         <table className="table table-zebra w-full">

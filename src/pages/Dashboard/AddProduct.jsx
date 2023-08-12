@@ -74,7 +74,7 @@ const AddProduct = () => {
     return (
         <div className="h-full">
             <Helmet>
-                <title>REPLIQ | Add Products</title>
+                <title>REPLIQ | Add Product</title>
             </Helmet>
             <div>
                 <SectionTitle heading="Add Product" />
