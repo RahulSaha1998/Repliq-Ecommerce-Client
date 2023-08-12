@@ -16,7 +16,7 @@ const Dashboard = () => {
                 <ul className="menu p-4 w-80 h-full bg-slate-300 text-base-content">
                     <li><NavLink to="/dashboard/adminhome"><FaHome></FaHome> Admin Home</NavLink></li>
                     <li><NavLink to="/dashboard/addProduct"> <FaPlusCircle></FaPlusCircle> Add Product</NavLink></li>
-                    <li><NavLink to="/dashboard/manageitems"><FaBoxOpen></FaBoxOpen>All Products</NavLink></li>
+                    <li><NavLink to="/dashboard/allProducts"><FaBoxOpen></FaBoxOpen>All Products</NavLink></li>
                     <li><NavLink to="/dashboard/allCustomers"><FaUsers></FaUsers> All Customers</NavLink></li>
 
                     <div className="divider"></div>

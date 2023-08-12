@@ -11,6 +11,7 @@ import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../layouts/Dashboard";
 import AddProduct from "../pages/Dashboard/AddProduct";
 import AllCustomers from "../pages/Dashboard/AllCustomers";
+import AllProducts from "../pages/Dashboard/AllProducts";
 
 export const router = createBrowserRouter([
     {
@@ -47,6 +48,11 @@ export const router = createBrowserRouter([
                 path: "/dashboard/allCustomers",
                 element: <AllCustomers></AllCustomers>,
                 loader: () => fetch('http://localhost:5000/users')
+            },
+            {
+                path: "/dashboard/allProducts",
+                element: <AllProducts></AllProducts>,
+                loader: () => fetch('http://localhost:5000/products')
             },
         ]
     },
