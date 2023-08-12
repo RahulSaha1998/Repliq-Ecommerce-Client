@@ -28,7 +28,7 @@ const Header = () => {
 
         {
             isAdmin ? <>
-                <li> <Link className='font-semibold' to="/dashboard/addProduct">Admin Dashboard</Link> </li>
+                <li> <Link className='font-semibold' to="/dashboard/allProducts">Admin Dashboard</Link> </li>
             </>
                 :
                 <>

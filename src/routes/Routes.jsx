@@ -12,6 +12,7 @@ import Dashboard from "../layouts/Dashboard";
 import AddProduct from "../pages/Dashboard/AddProduct";
 import AllCustomers from "../pages/Dashboard/AllCustomers";
 import AllProducts from "../pages/Dashboard/AllProducts";
+import UpdateProduct from "../pages/Dashboard/UpdateProduct";
 
 export const router = createBrowserRouter([
     {
@@ -34,6 +35,7 @@ export const router = createBrowserRouter([
                 path: "/cart",
                 element: <PrivateRoute><Cart></Cart></PrivateRoute>
             },
+            
         ]
     },
     {
@@ -54,6 +56,12 @@ export const router = createBrowserRouter([
                 element: <AllProducts></AllProducts>,
                 loader: () => fetch('http://localhost:5000/products')
             },
+            {
+                path: "/dashboard/updateProduct/:id",
+                element: <UpdateProduct></UpdateProduct>,
+                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
+            }
+            
         ]
     },
 ]);

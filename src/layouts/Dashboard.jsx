@@ -1,4 +1,4 @@
-import { FaBook, FaBoxOpen, FaHome, FaPlus, FaPlusCircle, FaUsers, FaUtensils, FaWallet } from "react-icons/fa";
+import {  FaBoxOpen, FaHome, FaPlusCircle, FaUsers } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
@@ -15,8 +15,9 @@ const Dashboard = () => {
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80 h-full bg-slate-300 text-base-content">
                     <li><NavLink to="/dashboard/adminhome"><FaHome></FaHome> Admin Home</NavLink></li>
-                    <li><NavLink to="/dashboard/addProduct"> <FaPlusCircle></FaPlusCircle> Add Product</NavLink></li>
                     <li><NavLink to="/dashboard/allProducts"><FaBoxOpen></FaBoxOpen>All Products</NavLink></li>
+                    <li><NavLink to="/dashboard/addProduct"> <FaPlusCircle></FaPlusCircle> Add Product</NavLink></li>
+
                     <li><NavLink to="/dashboard/allCustomers"><FaUsers></FaUsers> All Customers</NavLink></li>
 
                     <div className="divider"></div>
